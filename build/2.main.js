@@ -157,9 +157,8 @@ ChartComponent = __decorate([
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReadingChartPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(41);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(49);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models__ = __webpack_require__(87);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -172,28 +171,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var ReadingChartPage = (function () {
-    function ReadingChartPage(params, navCtrl, datePipe) {
+    function ReadingChartPage(params, navCtrl) {
         var _this = this;
         this.params = params;
         this.navCtrl = navCtrl;
-        this.datePipe = datePipe;
         if (params.data) {
             this.book = params.data;
         }
         this.items = [];
-        var totalPageRange = new __WEBPACK_IMPORTED_MODULE_3__models__["e" /* PageRanges */]();
+        var totalPageRange = new __WEBPACK_IMPORTED_MODULE_2__models__["e" /* PageRanges */]();
         this.book.getReadPageRanges().forEach(function (readPage) {
             totalPageRange.margeAll(readPage.pageRanges);
             _this.items.push({
-                x: _this.datePipe.transform(readPage.startDate, 'y-MM-ddTHH:mm:ss'),
-                end: _this.datePipe.transform(readPage.endDate, 'y-MM-ddTHH:mm:ss'),
+                x: readPage.startDate,
+                end: readPage.endDate,
                 y: readPage.pageRanges.getReadPages(),
                 group: 0
             });
             _this.items.push({
-                x: _this.datePipe.transform(readPage.endDate, 'y-MM-ddTHH:mm:ss'),
+                x: readPage.endDate,
                 y: totalPageRange.getReadPages(),
                 group: 1
             });
@@ -214,6 +211,8 @@ var ReadingChartPage = (function () {
         ];
         var minDate = this.book.getMinReadingDate();
         var maxDate = this.book.getMaxReadingDate();
+        var startDate = new Date(minDate.getFullYear(), minDate.getMonth(), minDate.getDate(), 0, 0, 0, 0);
+        var endDate = new Date(maxDate.getFullYear(), maxDate.getMonth(), maxDate.getDate(), 23, 59, 59, 999);
         this.options = {
             width: '100%',
             legend: {
@@ -236,23 +235,22 @@ var ReadingChartPage = (function () {
                 enabled: false,
             },
             // locale: navigator.language,
-            start: this.datePipe.transform(minDate, 'y-MM-ddT00:00'),
-            end: this.datePipe.transform(maxDate, 'y-MM-ddT23:59')
+            start: startDate,
+            end: endDate
         };
     }
     return ReadingChartPage;
 }());
 ReadingChartPage = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* IonicPage */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* IonicPage */])({
         name: 'ReadingChartPage',
         segment: 'reading-chart'
     }),
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_6" /* Component */])({
         selector: 'reading-chart',template:/*ion-inline-start:"/Users/s_kozake/develop/yomoo/yomoo/src/pages/reading-chart/reading-chart.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>読書グラフ</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-item>\n      <ion-thumbnail item-start>\n        <img src="{{book.imageUrl}}">\n      </ion-thumbnail>\n      <h2 style="white-space:normal">\n        <a href="{{book.detailPageUrl ? book.detailPageUrl: \'#\'}}">{{book.bookTitle}}</a>\n      </h2>\n      <p>({{book.getReadPages()}} / {{book.pages}}) ページ</p>\n      <p>前回：{{book.getLastReadingStartDate() | date:\'y年M月d日(EEE)\'}}</p>\n    </ion-item>\n  </ion-list>\n\n  <chart chartId="chart" style="" [items]="items" [groups]="groups" [options]="options"></chart>\n  <!-- <p-chart type="bar" [data]="data"></p-chart> -->\n\n</ion-content>\n'/*ion-inline-end:"/Users/s_kozake/develop/yomoo/yomoo/src/pages/reading-chart/reading-chart.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* NavParams */],
-        __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */],
-        __WEBPACK_IMPORTED_MODULE_1__angular_common__["a" /* DatePipe */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]])
 ], ReadingChartPage);
 
 //# sourceMappingURL=reading-chart.js.map
