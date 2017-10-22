@@ -1,6 +1,6 @@
 webpackJsonp([6],{
 
-/***/ 675:
+/***/ 674:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReadingBookPageModule", function() { return ReadingBookPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(49);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__reading_book__ = __webpack_require__(842);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__reading_book__ = __webpack_require__(841);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,7 +41,7 @@ ReadingBookPageModule = __decorate([
 
 /***/ }),
 
-/***/ 842:
+/***/ 841:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -203,7 +203,7 @@ ReadingBookPage = __decorate([
         segment: 'reading-book'
     }),
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_6" /* Component */])({
-        selector: 'reading-book',template:/*ion-inline-start:"/Users/s_kozake/develop/yomoo/yomoo/src/pages/reading-book/reading-book.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Yomoo!</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only clear (click)="tweetReading($event)">\n        <ion-icon name="logo-twitter"></ion-icon>\n      </button>\n      <button ion-button icon-only clear (click)="chart($event)">\n        <ion-icon name="ios-stats"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-item>\n      <ion-thumbnail item-start>\n        <img src="{{book.imageUrl}}">\n      </ion-thumbnail>\n      <h2 style="white-space:normal">\n        <a href="{{book.detailPageUrl ? book.detailPageUrl: \'#\'}}" target="_blank">{{book.bookTitle}}</a>\n      </h2>\n      <p>({{book.getReadPages()}} / {{book.pages}}) ページ</p>\n      <p>前回：{{book.getLastReadingStartDate() | date:\'y年M月d日(EEE)\'}}</p>\n    </ion-item>\n  </ion-list>\n  <form #editForm="ngForm">\n    <ion-list>\n      <ion-item>\n        <ion-label>開始日</ion-label>\n        <ion-datetime name="startDate" displayFormat="YYYY年MM月DD日" [ngModel]="startDate" [disabled]="true"></ion-datetime>\n      </ion-item>\n      <ion-item>\n        <ion-label>開始時間</ion-label>\n        <ion-datetime name="startTime" displayFormat="HH:mm:ss" [(ngModel)]="startTime" [disabled]="!isReading()"></ion-datetime>\n      </ion-item>\n      <ion-item>\n        <ion-label>開始ページ</ion-label>\n        <ion-input name="startPage" required type="number" min="0" inputmode="numeric" pattern="[0-9]*" [(ngModel)]="startPage" [disabled]="false"></ion-input> \n      </ion-item>\n    </ion-list>\n    <div style="text-align: center">\n        <button ion-button icon-only *ngIf="!isReading()" [disabled]="editForm.invalid" (click)="doStartReading($event)">\n          <ion-icon name="ios-play"></ion-icon>\n        </button>\n        <button ion-button icon-only *ngIf="isReading()" [disabled]="editForm.invalid" (click)="doStopReading($event)">\n          <ion-icon name="ios-pause"></ion-icon>\n        </button>\n    </div>\n  </form>\n  <div style="text-align: center; font-size: 70px; font-family: Helvetica, sans-serif;font-weight: bold;line-height: 190px;" *ngIf="isReading">\n    {{timerString}}\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/s_kozake/develop/yomoo/yomoo/src/pages/reading-book/reading-book.html"*/
+        selector: 'reading-book',template:/*ion-inline-start:"/Users/s_kozake/develop/yomoo/yomoo/src/pages/reading-book/reading-book.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Yomoo!</ion-title>\n    <ion-buttons end>\n      <!-- <button ion-button icon-only clear (click)="tweetReading($event)">\n        <ion-icon name="logo-twitter"></ion-icon>\n      </button> -->\n      <button ion-button icon-only clear (click)="chart($event)">\n        <ion-icon name="ios-stats"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-item>\n      <ion-thumbnail item-start>\n        <img src="{{book.imageUrl}}">\n      </ion-thumbnail>\n      <h2 style="white-space:normal">\n        <a href="{{book.detailPageUrl ? book.detailPageUrl: \'#\'}}" target="_system">{{book.bookTitle}}</a>\n      </h2>\n      <p>({{book.getReadPages()}} / {{book.pages}}) ページ</p>\n      <p>前回：{{book.getLastReadingStartDate() | date:\'y年M月d日(EEE)\'}}</p>\n    </ion-item>\n  </ion-list>\n  <form #editForm="ngForm">\n    <ion-list>\n      <ion-item>\n        <ion-label>開始日</ion-label>\n        <ion-datetime name="startDate" displayFormat="YYYY年MM月DD日" [ngModel]="startDate" [disabled]="true"></ion-datetime>\n      </ion-item>\n      <ion-item>\n        <ion-label>開始時間</ion-label>\n        <ion-datetime name="startTime" displayFormat="HH:mm:ss" [(ngModel)]="startTime" [disabled]="!isReading()"></ion-datetime>\n      </ion-item>\n      <ion-item>\n        <ion-label>開始ページ</ion-label>\n        <ion-input name="startPage" required type="number" min="0" inputmode="numeric" pattern="[0-9]*" [(ngModel)]="startPage" [disabled]="false"></ion-input> \n      </ion-item>\n    </ion-list>\n    <div style="text-align: center">\n        <button ion-button icon-only *ngIf="!isReading()" [disabled]="editForm.invalid" (click)="doStartReading($event)">\n          <ion-icon name="ios-play"></ion-icon>\n        </button>\n        <button ion-button icon-only *ngIf="isReading()" [disabled]="editForm.invalid" (click)="doStopReading($event)">\n          <ion-icon name="ios-pause"></ion-icon>\n        </button>\n    </div>\n  </form>\n  <div style="text-align: center; font-size: 70px; font-family: Helvetica, sans-serif;font-weight: bold;line-height: 190px;" *ngIf="isReading">\n    {{timerString}}\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/s_kozake/develop/yomoo/yomoo/src/pages/reading-book/reading-book.html"*/
     }),
     __param(5, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["i" /* Optional */])()),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* NavParams */],
